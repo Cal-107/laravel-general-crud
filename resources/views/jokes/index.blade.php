@@ -1,21 +1,22 @@
 @extends('layouts.main')
 
 @section('content')
-<section class="container mt-5 d-flex flex-column">
-    <div class="row">
+<section class="h-100 container d-flex flex-column justify-content-center">
+    <h1>Choose your author to find his quote</h1>
+    <div class="row justify-content-evenly">
         @foreach ($jokes as $joke)
-        <div class="col-3 m-5 p-5 text-center border border-5 border-primary">
+        <div class="col-5 m-3 p-5 text-center rounded-pill bg-light">
             <a href="{{ route('jokes.show', $joke->id) }}" class="text-decoration-none text-dark my-5">
-                <h4><strong>{{ $joke->author }}</strong></h4>
-                <p>
+                <h3><strong>{{ $joke->author }}</strong></h3>
+                {{-- <p>
                     {{ $joke->quote }}
                 </p>
                 <div>
-                    {{ $joke->date}}
+                    <strong>Date: </strong>{{ $joke->date}}
                 </div>
                 <div>
-                    {{ $joke->vote}}
-                </div>
+                    <strong>Vote: </strong>{{ $joke->vote}}
+                </div> --}}
             </a>
         </div>    
         @endforeach
