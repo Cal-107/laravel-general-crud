@@ -13,10 +13,10 @@
                 <a class="nav-link" aria-current="page" href="{{ route('home') }}">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{ route('home') }}">Jokes</a>
+                <a class="nav-link" aria-current="page" href="{{ route('jokes.index') }}">Jokes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="{{ route('home') }}">Make Joke</a>
+                <a class="nav-link" aria-current="page" href="{{ route('jokes.create') }}">Make Joke</a>
               </li>
             </ul>
           </div>
