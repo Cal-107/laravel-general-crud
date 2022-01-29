@@ -54,7 +54,7 @@ class JokeController extends Controller
             return view('jokes.show', compact('joke'));
         }
 
-        abort(404);
+        return view('errors.404');
     }
 
     /**
