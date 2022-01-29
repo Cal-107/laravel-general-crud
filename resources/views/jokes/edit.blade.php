@@ -19,13 +19,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="date" class="form-label">{{ $joke->date }}</label>
+            <label for="date" class="form-label"></label>
             <input type="text" class="form-control" id="date" name="date" placeholder="2022-10-10" value="{{ $joke->date }}">
         </div>
 
         <div class="mb-3">
-            <label for="vote" class="form-label">{{ $joke->vote }}</label>
-            <input type="text" class="form-control" id="vote" name="vote" value="{{ $joke->author }}"> 
+            <label for="vote" class="form-label"></label>
+            <input type="text" class="form-control" id="vote" name="vote" value="{{ $joke->vote }}"> 
         </div>
         <button type="submit" class="btn btn-secondary border border-dark border-2">
             Edit Joke!
