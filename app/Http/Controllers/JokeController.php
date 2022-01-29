@@ -15,7 +15,6 @@ class JokeController extends Controller
     public function index()
     {
         $jokes = Joke::all();
-        dump($jokes);
         return view('jokes.index', compact('jokes'));
     }
 
@@ -26,7 +25,7 @@ class JokeController extends Controller
      */
     public function create()
     {
-        //
+        return view('jokes.create');
     }
 
     /**
@@ -37,7 +36,14 @@ class JokeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $new_joke = new Joke();
+
+        $new_joke->fill($data);
+        $new_joke->save();
+
+        return redirect()->route('jokes.index');
     }
 
     /**
@@ -65,7 +71,14 @@ class JokeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $joke = Joke::find($id);
+
+        
+        if ($joke) {
+            return view('jokes.edit', compact('joke'));
+        }
+
+        return view('errors.404');
     }
 
     /**
@@ -77,7 +90,13 @@ class JokeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $joke = Joke::find($id);
+
+        $joke->update($data);
+    
+        return redirect()->route('jokes.show', $joke->id);
     }
 
     /**

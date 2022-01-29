@@ -10,7 +10,7 @@
 <body class="d-flex flex-column vh-100">
     @include('partials.header')
 
-    <main class="bg-secondary flex-grow-1">
+    <main class="bg-secondary flex-grow-1 py-4">
         @yield('content')
     </main>
 
