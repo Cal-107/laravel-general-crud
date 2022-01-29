@@ -14,7 +14,8 @@ class JokeController extends Controller
      */
     public function index()
     {
-        $jokes = Joke::all();
+        // $jokes = Joke::all();
+        $jokes = Joke::simplePaginate(2);
         return view('jokes.index', compact('jokes'));
     }
 
@@ -52,9 +53,9 @@ class JokeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Joke $joke)
     {
-        $joke = Joke::find($id);
+        // $joke = Joke::find($id);
 
         if($joke) {
             return view('jokes.show', compact('joke'));
@@ -69,11 +70,10 @@ class JokeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Joke $joke)
     {
-        $joke = Joke::find($id);
+        // $joke = Joke::find($id);
 
-        
         if ($joke) {
             return view('jokes.edit', compact('joke'));
         }
@@ -88,11 +88,11 @@ class JokeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Joke $joke)
     {
         $data = $request->all();
 
-        $joke = Joke::find($id);
+        // $joke = Joke::find($id);
 
         $joke->update($data);
     
@@ -105,8 +105,12 @@ class JokeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Joke $joke)
     {
-        //
+        // $joke = Joke::find($id);
+
+        $joke->delete();
+
+        return redirect()->route('jokes.index')->with('deleted-joke', $joke->author);
     }
 }
